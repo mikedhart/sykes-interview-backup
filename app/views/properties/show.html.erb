@@ -1,0 +1,54 @@
+<h2>Basic Property Info with Price Bands and bookings</h2>
+
+<table>
+	<tr>
+		<th>Property Name</th>
+		<td><%= @property.property_name %></td>
+	</tr>
+	<tr>
+		<th>Location</th>
+		<td><%= @property.location_name%></td>
+	</tr>
+</table>
+
+<table>
+	<thead>
+	<caption>Price Bands</caption>
+		<tr>
+			<th>Price Band ID</th>
+			<th>Price</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @property.price_bands.each do |pb| %>
+			<tr>
+				<td><%= pb.__pk %></td>
+				<td>£<%= pb.price %></td>
+				<td><%= pb.start_date %></td>
+				<td><%= pb.end_date %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table>
+	<caption>Bookings</caption>
+	<thead>
+		<tr>
+			<th>Price Band ID</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @property.bookings.each do |b| %>
+			<tr>
+				<td><%= b.__pk %></td>
+				<td><%= b.start_date %></td>
+				<td><%= b.end_date %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

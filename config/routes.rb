@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-	root 'property#index'
+	root "properties#index"
+
+	resources :properties
 end

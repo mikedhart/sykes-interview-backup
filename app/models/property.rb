@@ -1,8 +1,8 @@
 class Property < ApplicationRecord
 	#Assocoations
 	has_one :location, primary_key: :_fk_location, foreign_key: :__pk
-	has_many :price_bands, primary_key: :__pk
-	has_many :bookings, primary_key: :__pk
+	has_many :price_bands, primary_key: :__pk, foreign_key: :_fk_property
+	has_many :bookings, primary_key: :__pk, foreign_key: :_fk_property
 
 	#Scopes
 	scope :location, -> (location_id) { where _fk_location: location_id }

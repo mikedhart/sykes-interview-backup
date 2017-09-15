@@ -28,7 +28,7 @@
 	<tbody>
 		<% @properties.each do |property| %>
 			<tr>
-				<td><%= property.property_name %></td>
+				<td><%= link_to property.property_name, property_path(property.__pk) %></td>
 				<td><%= property.location_name %></td>
 				<td><%= property.beds %></td>
 				<td><%= property.sleeps %></td>

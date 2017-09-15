@@ -1,0 +1,42 @@
+<h2>Simple Property Table with Search</h2>
+<div class="filters">
+	<%= form_for "q", url: root_path, method: :get do |f| %>
+		<%= f.select "beds", (1..20).to_a, include_blank: "Beds", selected: params[:q][:beds] %><br>
+
+		<%= f.select "sleeps", (1..20).to_a, include_blank: "Sleeps", selected: params[:q][:sleeps] %><br>
+
+		<%= f.select "near_beach", [["Yes",true],["No",false]], include_blank: "Near Beach?", selected: params[:q][:near_beach] %><br>
+
+		<%= f.select "accepts_pets", [["Yes",true],["No",false]], include_blank: "Pets?", selected: params[:q][:accepts_pets] %><br>
+
+		<%= f.select "location", Location.all.pluck(:location_name,:__pk), include_blank: "Location", selected: params[:q][:location] %><br>
+
+		<%= f.submit "Filter"%>
+	<% end %>
+</div>
+<table>
+	<thead>
+		<tr>
+			<th>Property Name</th>
+			<th>Location</th>
+			<th>Beds</th>
+			<th>Sleeps</th>
+			<th>Pets?</th>
+			<th>Near Beach?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @properties.each do |property| %>
+			<tr>
+				<td><%= property.property_name %></td>
+				<td><%= property.location_name %></td>
+				<td><%= property.beds %></td>
+				<td><%= property.sleeps %></td>
+				<td><%= property.accepts_pets == 1 ? 'True' : 'False' %></td>
+				<td><%= property.near_beach == 1 ? 'True' : 'False' %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= will_paginate @properties %>

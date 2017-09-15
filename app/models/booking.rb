@@ -1,3 +1,3 @@
 class Booking < ApplicationRecord
-	has_many :properties, foreign_key: :_fk_location
+	has_many :properties, primary_key: :_fk_property, foreign_key: :__pk
 end

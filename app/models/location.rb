@@ -1,3 +1,3 @@
 class Location < ApplicationRecord
-	has_many :properties, foreign_key: :_fk_location
+	has_many :properties
 end
